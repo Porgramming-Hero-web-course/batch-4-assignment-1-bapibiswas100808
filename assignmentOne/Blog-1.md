@@ -16,20 +16,23 @@ function fetchData(callback: (data: string) => void) {
 }
 
 fetchData((data) => console.log(data));
+```
 
 #### Promise:
 
 Promise is a good alternative to Callback. A promise will eventually be resolved or rejected. It helps to write cleaner code than callbacks. Rather than nesting callbacks, we can use the `then` and `catch` methods to handle the result or error. Promises are easier to manage than callbacks and help avoid "Callback Hell".
 
-
 **Example of Promise:**
+
+```typescript
 function fetchData(): Promise<string> {
-return new Promise((resolve) => {
-setTimeout(() => resolve("Data fetched"), 1000);
-});
+  return new Promise((resolve) => {
+    setTimeout(() => resolve("Data fetched"), 1000);
+  });
 }
 
 fetchData().then((data) => console.log(data));
+```
 
 ### Now let's see why async/await is preferable over the operations mentioned above:
 
@@ -37,19 +40,22 @@ fetchData().then((data) => console.log(data));
 
 This is the modern approach to handling asynchronous operations. This approach is built on top of Promises mainly. The async/await operation looks more like synchronous syntax to handle asynchronous operations. It improves readability and maintainability, especially when working with more complex operations. So the main benefit is that with async/await, the code looks like traditional synchronous code, which is very easy to understand.
 
-
-
 **Exaple of async/await function over Promise:**
+
+```typescript
 async function fetchData(): Promise<string> {
-return new Promise((resolve) => setTimeout(() => resolve("Data fetched"), 1000));
+  return new Promise((resolve) =>
+    setTimeout(() => resolve("Data fetched"), 1000)
+  );
 }
 
 async function getData() {
-const data = await fetchData();
-console.log(data);
+  const data = await fetchData();
+  console.log(data);
 }
 
 getData();
+```
 
 ### The main points where async/await is better than Promise/Callback:
 
@@ -58,4 +64,3 @@ getData();
 3. Debugging
 4. Avoid Callback Hell
 5. Maintainability
-```
